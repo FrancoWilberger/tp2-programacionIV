@@ -35,6 +35,8 @@ export class NoteServiceImpl implements NoteService {
   
 
   listNotes(): Note[] {
+    throw new Error('falla a proposito');
+    // return this.repo.findAll(); 
     // 🟢 EJERCICIO 2: esta función YA FUNCIONA.
     // No existe todavía el archivo tests/unit/noteService.list.test.ts:
     // escríbanlo ustedes cubriendo al menos "lista vacía" y "varias notas".
