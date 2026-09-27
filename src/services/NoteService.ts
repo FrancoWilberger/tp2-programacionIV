@@ -15,7 +15,6 @@ export interface NoteService {
 export class NoteServiceImpl implements NoteService {
   constructor(private readonly repo: NoteRepository) {}
 
-  createNote(data: NewNote): Note {
     // 🔴 EJERCICIO 1 (dado en rojo en tests/unit/noteService.create.test.ts)
     // Implementen la creación básica: crear la nota en el repositorio y
     // devolverla. Con esto alcanza para que el test de la cátedra pase.
@@ -25,8 +24,15 @@ export class NoteServiceImpl implements NoteService {
     // es true, además deben llamar a notify(nota) del módulo
     // notificationService. En el test, simulen ese módulo completo con
     // vi.mock y verifiquen la llamada con toHaveBeenCalledWith.
-    throw new Error('createNote: no implementado (Ejercicio 1)');
+   createNote(data: NewNote): Note {
+    const noteData = {
+      ...data,
+      pinned: data.pinned ?? false
+    };
+
+    return this.repo.create(noteData);
   }
+  
 
   listNotes(): Note[] {
     // 🟢 EJERCICIO 2: esta función YA FUNCIONA.
