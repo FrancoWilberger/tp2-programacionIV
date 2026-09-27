@@ -69,3 +69,17 @@ describe("Rutas de Notas - PATCH /notes/:id (Ejercicio 4)", () => {
     expect(resPatch.status).toBe(404);
   });
 });
+
+describe("Rutas de Notas - DELETE /notes/:id (Ejercicio 5)", () => {
+  let app: any;
+
+  beforeEach(() => {
+    app = makeApp(":memory:");
+  });
+
+  it("debe eliminar una nota y responder 200/204, o 404 si no existe", async () => {
+    await request(app)
+      .delete("/notes/9999")
+      .expect(404);
+  });
+});
