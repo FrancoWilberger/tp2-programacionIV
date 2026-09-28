@@ -14,8 +14,6 @@ describe('NoteService - Ejercicio 6: Notificación al fijar', () => {
 
   beforeEach(() => {
     vi.clearAllMocks(); // Limpiamos el historial de llamadas del mock antes de cada test
-
-    // Mock minimalista de la interfaz NoteRepository
     mockRepo = {
       create: vi.fn((data) => ({
         id: 1,
@@ -27,6 +25,7 @@ describe('NoteService - Ejercicio 6: Notificación al fijar', () => {
       findById: vi.fn(),
       update: vi.fn(),
       delete: vi.fn(),
+      clear: vi.fn(), 
     };
 
     noteService = new NoteServiceImpl(mockRepo);

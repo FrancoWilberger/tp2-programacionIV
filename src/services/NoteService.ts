@@ -30,7 +30,14 @@ export class NoteServiceImpl implements NoteService {
       pinned: data.pinned ?? false
     };
 
-    return this.repo.create(noteData);
+    const createdNote = this.repo.create(noteData);
+
+    // Ejercicio 6: Notificar si la nota fue creada con pinned: true
+    if (createdNote.pinned) {
+      notify(createdNote);
+    }
+
+    return createdNote;
   }
   
 
